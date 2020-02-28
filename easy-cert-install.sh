@@ -81,7 +81,9 @@ TMP_DER="$(mktemp)"
 
 echo | openssl s_client -showcerts -connect $HOST:$PORT > $TMP_PEM
 openssl x509 -outform der -in $TMP_PEM -out $TMP_DER
-
+rm -v $TMP_PEM
 $KEYTOOL -import -alias $ALIAS -keystore $CACERTS_FILE -file $TMP_DER
+rm -v $TMP_DER
+
 
 
