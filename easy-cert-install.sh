@@ -20,11 +20,6 @@ if ! [ -x "$(command -v openssl)" ]; then
   exit 1
 fi
 
-if ! [ -x "$(command -v curl)" ]; then
-  echo 'Error: curl is not installed.' >&2
-  exit 1
-fi
-
 # get java
 JAVA_HOME=$(java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk '{split($0,array," = ")} END {print array[2]}')
 echo "Using JAVA_HOME=$JAVA_HOME"
